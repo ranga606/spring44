@@ -1,0 +1,19 @@
+CREATE TABLE tb_article (
+    article_id serial  PRIMARY KEY,
+    user_id integer NOT NULL,
+    article_name text NOT NULL,
+    article_description text,
+    is_activated boolean DEFAULT false NOT NULL,
+    is_deleted boolean DEFAULT false NOT NULL
+);
+
+CREATE TABLE tb_content (
+    content_id serial  PRIMARY KEY,
+     article_id  integer NOT NULL,
+    contentType integer  DEFAULT 0,
+    content text,
+    content_order integer DEFAULT 0,
+    is_activated boolean DEFAULT false NOT NULL,
+    is_deleted boolean DEFAULT false NOT NULL,
+     FOREIGN KEY (article_id) REFERENCES tb_article (article_id)
+);
